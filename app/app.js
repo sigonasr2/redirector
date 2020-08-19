@@ -50,7 +50,7 @@ app.get('/api/agents/:agentId', (req, res) => {
 app.put('/api/agents/:agentId/status', (req, res) => {
   const agentId = parseInt(req.params.agentId)
   agentStore.updateAgentBeaconTime(agentId)
-  res.status(200).json(status)
+  res.status(200).send()
 })
 
 app.get('/api/agents/:agentId/tasks', (req, res) => {
