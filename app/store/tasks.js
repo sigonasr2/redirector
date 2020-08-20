@@ -38,10 +38,8 @@ const Tasks = () => {
   }
 
   obj.getAllTasksForAgent = (agentId) => {
-    const tasks = objs.tasks.filter(t => t.agentId === agentId)
-    return tasks.length !== 0 
-      ? tasks
-      : null
+    const tasks = obj.tasks.filter(t => t.agentId === agentId)
+    return tasks
   }
 
   obj.getAllTasks = () => obj.tasks
