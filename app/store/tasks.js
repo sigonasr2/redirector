@@ -9,7 +9,7 @@ const Tasks = () => {
     task.agentId = agentId
     task.command = command
     task.id = obj.tasks.length + 1
-    task.tasked_date = moment().format('MM/DD/YYYY, hh:mm:SS A')
+    task.tasked_date = moment().format('MM/DD/YYYY, hh:mm:ss A')
     task.complete_date = ''
     task.response = ''
     obj.tasks.push(task)
@@ -34,7 +34,7 @@ const Tasks = () => {
     obj.tasks.forEach(t => {
       if (t.id === taskId) {
         t.response = response
-        t.complete_date = moment().format('MM/DD/YYYY, hh:mm:SS A')
+        t.complete_date = moment().format('MM/DD/YYYY, hh:mm:ss A')
       }
     })
   }
