@@ -47,21 +47,16 @@ app.get('/api/agents/:agentId', (req, res) => {
   }
 })
 
-app.put('/api/agents/:agentId/status', (req, res) => {
-  const agentId = parseInt(req.params.agentId)
-  agentStore.updateAgentBeaconTime(agentId)
-  res.status(200).send()
-})
-
 app.get('/api/agents/:agentId/tasks', (req, res) => {
   const agentId = parseInt(req.params.agentId)
-  const tasks = taskStore.getAllTasksForAgent(agentId)
-  if (tasks) {
-    res.status(200).json(tasks)
-  } else {
+  const agent = agentStore.getAgentById(agentId)
+  if (!agent) {
     res.status(404).json({
       message: 'agent does not exist'
     })
+  } else {
+    const tasks = taskStore.getAllTasksForAgent(agentId)
+    res.status(200).json(tasks)
   }
 })
 
