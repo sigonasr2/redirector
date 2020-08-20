@@ -11,7 +11,7 @@ const Agents = () => {
     agent.ip = ip
     agent.profile = profile
     agent.interval = parseInt(interval)
-    agent.last_beacon_date = moment.utc().format('MM/DD/YYYY, hh:mm:SS A')
+    agent.last_beacon_date = moment().format('MM/DD/YYYY, hh:mm:ss A')
     agent.status = true
     obj.agents.push(agent)
     return agent.id
@@ -22,8 +22,8 @@ const Agents = () => {
     if (!agent) {
       return null
     } else {
-      const lbd = moment(agent.last_beacon_date, 'MM DD YYYY, hh:mm:SS A')
-      const diff = (lbd.diff(moment(), 'second') * -1)
+      const lbd = moment(agent.last_beacon_date, 'MM/DD/YYYY, hh:mm:ss A').utc()
+      const diff = (lbd.diff(moment().utc(), 'seconds') * -1)
       if (diff > agent.interval) {
         agent.status = false
       }
@@ -34,7 +34,7 @@ const Agents = () => {
   obj.updateAgentBeaconTime = (agentId) => {
     obj.agents.forEach(a => {
       if (a.id === agentId) {
-        a.last_beacon_date = moment.utc().format('MM/DD/YYYY, hh:mm:SS A')
+        a.last_beacon_date = moment().format('MM/DD/YYYY, hh:mm:ss A')
         return true
       }
     })
@@ -63,8 +63,8 @@ const Agents = () => {
 
   obj.getAllAgents = () => {
     obj.agents.forEach(agent => {
-      const lbd = moment(agent.last_beacon_date, 'MM DD YYYY, hh:mm:SS A')
-      const diff = (lbd.diff(moment(), 'second') * -1)
+      const lbd = moment(agent.last_beacon_date, 'MM/DD/YYYY, hh:mm:ss A').utc()
+      const diff = (lbd.diff(moment().utc(), 'seconds') * -1)
       if (diff > agent.interval) {
         agent.status = false
       }
