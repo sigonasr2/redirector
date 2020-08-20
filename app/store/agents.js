@@ -44,7 +44,7 @@ const Agents = () => {
   obj.deleteAgentById = (agentId) => {
     const index = obj.agents.findIndex(agent => agent.id === agentId)
     if (index !== -1) {
-      obj.splice(index, 1)
+      obj.agents.splice(index, 1)
       return true
     } else {
       return false
