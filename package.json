@@ -12,12 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "jest": "^26.4.0",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
+    "express": "^4.17.1",
+    "moment": "^2.27.0"
   },
   "jest": {
     "testEnvironment": "node",

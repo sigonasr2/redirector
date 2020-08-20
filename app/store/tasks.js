@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 const Tasks = () => {
   const obj = {}
   obj.tasks = []
@@ -7,7 +9,7 @@ const Tasks = () => {
     task.agentId = agentId
     task.command = command
     task.id = obj.tasks.length + 1
-    task.tasked_date = new Date(Date.now()).toLocaleString()
+    task.tasked_date = moment().format('MM/DD/YYYY, hh:mm:SS A')
     task.complete_date = ''
     task.response = ''
     obj.tasks.push(task)
@@ -32,7 +34,7 @@ const Tasks = () => {
     obj.tasks.forEach(t => {
       if (t.id === taskId) {
         t.response = response
-        t.complete_date = new Date(Date.now()).toLocaleString()
+        t.complete_date = moment().format('MM/DD/YYYY, hh:mm:SS A')
       }
     })
   }

