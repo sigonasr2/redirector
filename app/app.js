@@ -63,11 +63,18 @@ app.get('/api/agents/:agentId/tasks', (req, res) => {
 // Interact with tasks
 app.post('/api/tasks', (req, res) => {
   const { command, agentId } = req.body
-  const taskId = taskStore.addTask(command, agentId)
-  res.status(200).json({
-    taskId: taskId,
-    agentId: agentId
-  })
+  const agent = agentStore.getAgentById(agentId)
+  if (!agent) {
+    res.status(404).json({
+      message: 'agent does not exist'
+    })
+  } else {
+    const taskId = taskStore.addTask(command, agentId)
+    res.status(200).json({
+      taskId: taskId,
+      agentId: agentId
+    })
+  }
 })
 
 app.get('/api/tasks', (req, res) => {
