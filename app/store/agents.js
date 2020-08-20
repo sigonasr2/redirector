@@ -10,7 +10,7 @@ const Agents = () => {
     agent.os = os
     agent.ip = ip
     agent.profile = profile
-    agent.interval = parseInterval(interval)
+    agent.interval = parseInt(interval)
     agent.last_beacon_date = new Date(Date.now()).toLocaleString()
     agent.status = true
     obj.agents.push(agent)
