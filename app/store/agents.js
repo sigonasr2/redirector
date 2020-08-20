@@ -23,7 +23,7 @@ const Agents = () => {
       return null
     } else {
       const lbd = moment(agent.last_beacon_date, 'MM/DD/YYYY, hh:mm:ss A').utc()
-      const diff = (lbd.diff(moment().utc(), 'seconds') * -1)
+      const diff = (lbd.diff(moment().utc(), 'seconds') * -1) + 20
       if (diff > agent.interval) {
         agent.status = false
       }
@@ -64,7 +64,7 @@ const Agents = () => {
   obj.getAllAgents = () => {
     obj.agents.forEach(agent => {
       const lbd = moment(agent.last_beacon_date, 'MM/DD/YYYY, hh:mm:ss A').utc()
-      const diff = (lbd.diff(moment().utc(), 'seconds') * -1)
+      const diff = (lbd.diff(moment().utc(), 'seconds') * -1) + 20
       if (diff > agent.interval) {
         agent.status = false
       }
