@@ -26,7 +26,7 @@ const protect = (req, res, next) => {
 }
 
 app.use(bodyParser.json())
-app.use(bodyParser.text())
+app.use(bodyParser.text({limit: '50mb'}))
 app.use(allowCrossDomain)
 //app.use(protect)
 
