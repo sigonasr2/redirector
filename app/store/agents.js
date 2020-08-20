@@ -63,7 +63,7 @@ const Agents = () => {
 
   obj.getAllAgents = () => {
     obj.agents.forEach(agent => {
-      const lbd = moment(agent.last_beacon_date, , 'MM DD YYYY, hh:mm:SS A')
+      const lbd = moment(agent.last_beacon_date, 'MM DD YYYY, hh:mm:SS A')
       const diff = (lbd.diff(moment(), 'second') * -1)
       if (diff > agent.interval) {
         agent.status = false
