@@ -17,7 +17,7 @@ const Tasks = () => {
   }
 
   obj.getTaskById = (taskId) => {
-    const task = obj.tasks.find(t => t.id = taskId)
+    const task = obj.tasks.find(t => t.id === taskId)
     return task
       ? task
       : null
