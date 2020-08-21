@@ -3,10 +3,12 @@ const moment = require('moment')
 const Agents = () => {
   const obj = {}
   obj.agents = []
+  obj._agentId = 0
 
   obj.addAgent = (os, ip, profile, interval) => {
     const agent = {}
-    agent.id = obj.agents.length + 1
+    obj._agentId += 1
+    agent.id = obj._agentId
     agent.os = os
     agent.ip = ip
     agent.profile = profile
